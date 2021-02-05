@@ -1,0 +1,4 @@
+The only requirements for this program to run is:
+   1. Python 3.8 version or higher.
+   2. turtle module installed.
+

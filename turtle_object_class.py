@@ -4,22 +4,26 @@ from time import sleep
 DISTANCE = 20
 
 
-class Frog(Turtle):
+class Dog(Turtle):
 
     def __init__(self):
-        super(Frog, self).__init__()
+        super(Dog, self).__init__()
         self.penup()
         self.hideturtle()
-        self.goto(x=0, y=-410)
+        self.goto(x=0, y=-380)
         self.showturtle()
         self.shape("turtle")
         self.setheading(90)
 
     def move(self):
-        self.forward(DISTANCE)
+        self.forward(distance=DISTANCE)
 
-    def reset_frog(self):
+    def move_left(self):
+        self.setheading(180)
+        self.forward(distance=DISTANCE)
+
+    def reset_player(self):
         self.hideturtle()
-        self.goto(x=0, y=-410)
+        self.goto(x=0, y=-380)
         self.setheading(90)
         self.showturtle()

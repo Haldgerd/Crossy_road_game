@@ -1,22 +1,33 @@
 from turtle import Turtle
-from time import sleep
+from random import choice
 
 # y position of cars will be randomized in between the viable area so between -350 and 350.
-SPEED = 3
+X_POSITION = 620
+POSSIBLE_Y_POSITIONS = [num for num in range(-300, 340, 60)]
+MOVING_DISTANCE = 10
+STARTING_MOVE_DISTANCE = 10
+SHAPES = ["./Images/bus.gif", "./Images/caravan-car.gif", "./Images/blue-car.gif", "./Images/bear_bike.gif",
+          "./Images/big_bus.gif", "./Images/mechanic_car.gif", "./Images/taxi_car.gif", "./Images/two_cars.gif"]
 
 
-class Car(Turtle):
+class Car:
 
     def __init__(self):
-        super(Car, self).__init__()
-        self.penup()
-        self.goto(x=1200, y=0)
-        self.speed(SPEED)
+        self.all_cars = []
+        self.car_speed = STARTING_MOVE_DISTANCE
 
-    def move(self):
-        self.fd(10)
+    def create_car(self):
+        car = Turtle()
+        car.shape(choice(SHAPES))
+        car.penup()
+        car.goto(x=X_POSITION, y=choice(POSSIBLE_Y_POSITIONS))
+        car.setheading(180)
+        self.all_cars.append(car)
 
-    def speed_incrementation(self):
-        global SPEED
-        SPEED += 1
-        self.speed(SPEED)
+    def move_car(self):
+        for car in self.all_cars:
+            # if car.distance(self.all_cars[-1] > 70):
+            car.fd(MOVING_DISTANCE)
+
+    def reset_car(self):
+        self.car_speed += MOVING_DISTANCE

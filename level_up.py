@@ -2,7 +2,7 @@ from turtle import Turtle
 from time import sleep
 
 FONT = "Courier New"
-COLOR = "SeaGreen"
+COLOR = "red3"
 
 
 class Level(Turtle):

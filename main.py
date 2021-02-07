@@ -6,11 +6,15 @@ from turtle_object_class import Dog
 from screen_modification_class import BorderTextRoad
 from level_up import Level
 from driving_cars_class import Car
+from foilage_class import Foliage
 
 # ------------- GLOBAL VARIABLES & VARIABLES -----------------
 COLOR = "grey"
 SHAPES = ["./Images/bus.gif", "./Images/caravan-car.gif", "./Images/blue-car.gif", "./Images/bear_bike.gif",
           "./Images/big_bus.gif", "./Images/mechanic_car.gif", "./Images/taxi_car.gif", "./Images/two_cars.gif"]
+
+FOLIAGE_SHAPES = ["./Images/tree-1.gif", "./Images/tree-2.gif", "./Images/tree-3.gif", "./Images/tree-4.gif",
+                  "./Images/tree-5.gif", "./Images/tree-6.gif"]
 
 # ------------ SCREEN INITIALIZATION --------------
 screen = Screen()
@@ -20,9 +24,14 @@ screen.title("Frog Crossing")
 screen.bgcolor(COLOR)
 screen.tracer(0)
 
-# creates a turtle object, registers shapes, informs player of current level
+# register car shapes
 for shape in range(len(SHAPES)):
     screen.register_shape(SHAPES[shape])
+
+# register tree shapes
+for tree in range(len(FOLIAGE_SHAPES)):
+    screen.register_shape(FOLIAGE_SHAPES[tree])
+
 
 # -------------- OBJECTS INITIALIZATION ----------------
 # writes title on the middle of screen
@@ -44,6 +53,7 @@ dog = Dog()
 dog.shape("./Images/dog.gif")
 
 car_manager = Car()
+trees = Foliage()
 
 level_text = Level()
 sleep(2)
@@ -60,7 +70,7 @@ loop_count = 1
 game_on = True
 while game_on:
     screen.update()
-    sleep(0.06)
+    sleep(0.05)
 
 # create a car object every 6th time a loop runs.
     if loop_count % 6 == 0:
